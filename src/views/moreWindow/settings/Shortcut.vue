@@ -137,11 +137,10 @@ import { MacOsKeyEnum } from '@/enums'
 import { useGlobalShortcut } from '@/hooks/useGlobalShortcut.ts'
 import { useSettingStore } from '@/stores/setting.ts'
 import { isMac } from '@/utils/PlatformConstants'
-import { useSendOptions } from './config.ts'
+import { sendOptions } from './config.ts'
 import { useI18n } from 'vue-i18n'
 
 const { t } = useI18n()
-const sendOptions = useSendOptions()
 // 快捷键配置管理
 type ShortcutConfig = {
   key: 'screenshot' | 'openMainPanel'
@@ -184,11 +183,6 @@ const shortcutConfigs: Record<string, ShortcutConfig> = {
     displayName: t('setting.shortcut.panel_switch')
   }
 }
-
-watchEffect(() => {
-  shortcutConfigs.screenshot.displayName = t('setting.shortcut.screenshot')
-  shortcutConfigs.openMainPanel.displayName = t('setting.shortcut.panel_switch')
-})
 
 // 向后兼容的别名（仅保留模板中使用的）
 const screenshotShortcut = shortcutConfigs.screenshot.value

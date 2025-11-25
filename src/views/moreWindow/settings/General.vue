@@ -145,7 +145,7 @@ import { CloseBxEnum, ShowModeEnum } from '@/enums'
 import { useSettingStore } from '@/stores/setting.ts'
 import { isWindows } from '@/utils/PlatformConstants'
 import { fontOptions, translateOptions, langOptions } from './config.ts'
-import { useTopicsList } from './model.tsx'
+import { topicsList } from './model.tsx'
 import { useI18n } from 'vue-i18n'
 
 const { t } = useI18n()
@@ -154,7 +154,6 @@ const settingStore = useSettingStore()
 const { themes, tips, chat, page } = settingStore
 const { showMode, escClose } = storeToRefs(settingStore)
 const activeItem = ref<string>(themes.pattern)
-const topicsList = useTopicsList()
 
 const showText = computed({
   get: () => showMode.value === ShowModeEnum.TEXT,
